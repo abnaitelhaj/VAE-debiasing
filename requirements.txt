@@ -1,0 +1,8 @@
+torch
+numpy
+matplotlib
+tqdm
+h5py
+comet_ml
+mitdeeplearning
+ipython
