@@ -104,14 +104,17 @@
 
 \clearpage
 \thispagestyle{plain}
+\noindent\begin{minipage}[c][\textheight][c]{\textwidth}
+\centering
+\begin{minipage}{0.78\textwidth}
 \begin{center}
-\begin{minipage}{0.82\textwidth}
-{\Large\bfseries Abstract}\par
-\vspace{1em}
-\large
+{\bfseries Abstract}
+\end{center}
+\vspace{0.2em}
 A face detector trained on a biased set of photographs can be nearly perfect on the mixture it was shown and still assign much lower face probability to faces that mixture rarely contains. We train that detector twice. First, faces and non-faces are drawn uniformly into a standard CNN. Second, the same convolutional trunk becomes the encoder of a variational autoencoder: it still says whether an image is a face and, for faces, also explains the image through a hundred-dimensional Gaussian code. Once an epoch, faces that land in sparse regions of that code are drawn more often. On the four-group test set, mean predicted face probability becomes more even across light and dark groups under the debiased model. Method: debiasing variational autoencoder of Amini et al.~\cite{amini2019}.
 \end{minipage}
-\end{center}
+\vspace*{2.4cm}
+\end{minipage}
 \clearpage
 
 \tableofcontents
