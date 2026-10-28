@@ -8,6 +8,8 @@
 \usepackage{caption}
 \usepackage{setspace}
 \usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,backgrounds}
 \usepackage{hyperref}
 \captionsetup{font=small, labelfont=bf, skip=4pt}
 \setstretch{1.15}
@@ -33,20 +35,85 @@
   fontupper=\normalsize
 }
 
-\title{Debiasing Facial Detection\\[0.2em]
-\large by Learned Latent Structure}
-\author{}
-\date{30 September 2026}
+\definecolor{dg}{HTML}{018754}
+\definecolor{lg}{HTML}{79b695}
+\definecolor{wg}{HTML}{c4dcce}
+\tikzset{background rectangle/.style={thin,draw=lg,fill=wg,rounded corners=1ex}}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+\newgeometry{left=0pt,right=0pt,top=20pt,bottom=0pt}
+\begin{tikzpicture}[remember picture,overlay,yshift=5cm,every path/.style={dg}]
+ \draw ([xshift=6.5cm]current page.north west) .. controls ([xshift=6.25cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-8.5cm]current page.north west);
+ \draw ([xshift=7cm]current page.north west) .. controls ([xshift=6.75cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-9cm]current page.north west);
+ \draw ([xshift=7.5cm]current page.north west) .. controls ([xshift=7.25cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-9.5cm]current page.north west);
+ \draw ([xshift=8cm]current page.north west) .. controls ([xshift=7.75cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-10cm]current page.north west);
+ \draw ([xshift=8.5cm]current page.north west) .. controls ([xshift=8.25cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-10.5cm]current page.north west);
+ \draw ([xshift=9cm]current page.north west) .. controls ([xshift=8.75cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-11cm]current page.north west);
+ \draw ([xshift=9.5cm]current page.north west) .. controls ([xshift=9.25cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-11.5cm]current page.north west);
+ \draw ([xshift=10cm]current page.north west) .. controls ([xshift=9.75cm,yshift=-4cm]current page.north west) and ([xshift=1cm,yshift=-5cm]current page.north west) .. ([yshift=-12cm]current page.north west);
+\end{tikzpicture}
+\begin{center}
+ \includegraphics[width=100pt,trim={0 0 0 1.5cm},clip]{img/hcp.png}
+ \begin{minipage}{.6\textwidth}
+ \vspace*{-60pt}
+ \centering\scshape Kingdom of Morocco\\
+ High Commission for Planning\\
+ National Institute of Statistics\\ and Applied Economics\\[1.5ex]
+ {\Huge \color{lg} INSEA}
+ \end{minipage}
+ \vspace*{2\baselineskip}
+ \includegraphics[width=60pt,angle=1,origin=c]{img/logo.png}
 
-\begin{abstract}
-\noindent
-A face detector trained on a biased set of photographs can be nearly perfect on the mixture it was shown and still assign much lower face probability to faces that mixture rarely contains. We train that detector twice. First, faces and non-faces are drawn uniformly into a standard CNN. Second, the same convolutional trunk becomes the encoder of a variational autoencoder: it still says whether an image is a face and, for faces, also explains the image through a hundred-dimensional Gaussian code. Once an epoch, faces that land in sparse regions of that code are drawn more often. On the four-group test set, mean predicted face probability becomes more even across light and dark groups under the debiased model. Method: debiasing variational autoencoder of Amini et al.~\cite{amini2019}.
-\end{abstract}
+ \vfill
+
+ \begin{minipage}{.6\textwidth}\centering
+ \begin{tikzpicture}[show background rectangle]
+ \node[align=center,text width=11cm,inner sep=1em]{
+ \Large \scshape \color{dg} Debiasing Facial Detection\\ by Learned Latent Structure
+ };
+ \node[xshift=3ex,yshift=-0.7ex,overlay,fill=lg,draw=dg,above right,rounded corners=.3ex] at (current bounding box.north west) {
+ \textit{\large \color{white} Subject:}
+ };
+ \end{tikzpicture}
+ \end{minipage}
+
+ \vfill
+ \begin{minipage}{.6\textwidth}\centering
+ \begin{tabular}{l@{ \textbf{:} }l}
+ \textbf{Realized by} & Abderrahmane Naitelhaj
+ \end{tabular}
+ \end{minipage}
+ \vfill
+ {\large 30 September 2026}
+ \vspace*{4\baselineskip}
+\end{center}
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.south west)},every path/.style={dg}]
+ \path [fill=dg] ([xshift=-6cm]current page.south east) .. controls ([xshift=-5.75cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=8cm]current page.south east) -- (current page.south east) -- cycle;
+ \draw ([xshift=-6.5cm]current page.south east) .. controls ([xshift=-6.25cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=8.5cm]current page.south east);
+ \draw ([xshift=-7cm]current page.south east) .. controls ([xshift=-6.75cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=9cm]current page.south east);
+ \draw ([xshift=-7.5cm]current page.south east) .. controls ([xshift=-7.25cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=9.5cm]current page.south east);
+ \draw ([xshift=-8cm]current page.south east) .. controls ([xshift=-7.75cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=10cm]current page.south east);
+ \draw ([xshift=-8.5cm]current page.south east) .. controls ([xshift=-8.25cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=10.5cm]current page.south east);
+ \draw ([xshift=-9cm]current page.south east) .. controls ([xshift=-8.75cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=11cm]current page.south east);
+ \draw ([xshift=-9.5cm]current page.south east) .. controls ([xshift=-9.25cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=11.5cm]current page.south east);
+ \draw ([xshift=-10cm]current page.south east) .. controls ([xshift=-9.75cm,yshift=4cm]current page.south east) and ([xshift=-1cm,yshift=5cm]current page.south east) .. ([yshift=12cm]current page.south east);
+\end{tikzpicture}
+\restoregeometry
+\end{titlepage}
 
 \clearpage
+\thispagestyle{plain}
+\begin{center}
+\begin{minipage}{0.82\textwidth}
+{\Large\bfseries Abstract}\par
+\vspace{1em}
+\large
+A face detector trained on a biased set of photographs can be nearly perfect on the mixture it was shown and still assign much lower face probability to faces that mixture rarely contains. We train that detector twice. First, faces and non-faces are drawn uniformly into a standard CNN. Second, the same convolutional trunk becomes the encoder of a variational autoencoder: it still says whether an image is a face and, for faces, also explains the image through a hundred-dimensional Gaussian code. Once an epoch, faces that land in sparse regions of that code are drawn more often. On the four-group test set, mean predicted face probability becomes more even across light and dark groups under the debiased model. Method: debiasing variational autoencoder of Amini et al.~\cite{amini2019}.
+\end{minipage}
+\end{center}
+\clearpage
+
 \tableofcontents
 \clearpage
 
